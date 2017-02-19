@@ -12,7 +12,7 @@ Template.helpers({
 	},
 	
 	concat(...rest) {
-    return this.noHash(rest).join('');
+		return rest.join('');
 	}
 	
 });
