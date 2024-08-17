@@ -1,25 +1,28 @@
 Package.describe({
   name: 'imajus:string-helpers',
-  version: '0.0.3',
-  // Brief, one-line summary of the package.
-  summary: 'Blaze helpers for string manipulation.',
-  // URL to the Git repository containing the source code for this package.
+  version: '0.1.0',
+  summary: 'Blaze helpers for string manipulation',
   git: 'https://github.com/imajus/meteor-string-helpers.git',
-  // By default, Meteor will default to using README.md for documentation.
-  // To avoid submitting documentation, set this field to null.
-  documentation: 'README.md'
+  documentation: 'README.md',
 });
 
-Package.onUse(function(api) {
-  api.versionsFrom('1.4.2');
-  api.use('ecmascript@0.6.3');
-  api.use(['templating@1.3.0', 'underscore@1.0.10', 'imajus:helpers-core@0.0.1'], 'client');
+Package.onUse(function (api) {
+  api.versionsFrom(['2.0', '3.0']);
+  api.use('ecmascript');
+  api.use(
+    [
+      'underscore',
+      'templating@1.3.4||1.4.4',
+      'underscorestring:underscore.string@3.3.4',
+      'imajus:helpers-core@0.1.0'
+    ],
+    'client'
+  );
   api.mainModule('string-helpers.js', 'client');
 });
 
-Package.onTest(function(api) {
-  api.use('ecmascript@0.6.3');
-  api.use('tinytest@1.0.12');
+Package.onTest(function (api) {
+  api.use(['ecmascript', 'tinytest']);
   api.use('imajus:string-helpers', 'client');
   api.mainModule('string-helpers-tests.js', 'client');
 });
